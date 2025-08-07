@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/**/*",
+      "src": "server/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
-    },
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -24,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/dist/$1"
     }
   ],
   "env": {
